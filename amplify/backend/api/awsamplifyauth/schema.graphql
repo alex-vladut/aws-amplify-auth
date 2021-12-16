@@ -1,0 +1,52 @@
+type User
+  @model(queries: { get: "getUser" }, subscriptions: null)
+  @auth(rules: [{ allow: owner, ownerField: "id" }]) {
+  id: ID! @primaryKey
+  email: AWSEmail!
+  phone: AWSPhone
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type Organisation
+  @model(subscriptions: null)
+  @auth(
+    rules: [
+      { allow: owner, ownerField: "createdById", operations: [create] }
+      {
+        allow: groups
+        groupsField: "id"
+        groupClaim: "tenants"
+        operations: [read, update]
+      }
+      { allow: private, operations: [delete] }
+    ]
+  ) {
+  id: ID! @primaryKey
+  name: String!
+  createdById: ID
+  createdBy: User @hasOne(fields: ["createdById"])
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type UserMembership
+  @model(subscriptions: null)
+  @auth(
+    rules: [
+      { allow: groups, groupsField: "organisationId", groupClaim: "tenants" }
+      { allow: private, provider: iam }
+    ]
+  ) {
+  id: ID! @primaryKey
+  organisationId: ID!
+  organisation: Organisation! @hasOne(fields: ["organisationId"])
+  userId: ID!
+    @index(
+      name: "byUser"
+      queryField: "userMembershipsByUser"
+      sortKeyFields: ["organisationId"]
+    )
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}

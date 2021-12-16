@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "awsamplifyauth",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "/Users/alex.vladut/projects/aws-amplify-auth/amplify/backend/api/awsamplifyauth/schema.graphql",
+    "defaultAuthType": {
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authawsamplifyauthc2544e60"
+    },
+    "additionalAuthTypes": [
+      {
+        "mode": "AWS_IAM"
+      }
+    ]
+  }
+}
