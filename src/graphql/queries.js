@@ -9,6 +9,9 @@ export const getUser = /* GraphQL */ `
       phone
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
@@ -24,9 +27,15 @@ export const getOrganisation = /* GraphQL */ `
         phone
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
@@ -55,11 +64,56 @@ export const listOrganisations = /* GraphQL */ `
           phone
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
+    }
+  }
+`;
+export const syncOrganisations = /* GraphQL */ `
+  query SyncOrganisations(
+    $filter: ModelOrganisationFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncOrganisations(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        name
+        createdById
+        createdBy {
+          id
+          email
+          phone
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
     }
   }
 `;
@@ -78,13 +132,22 @@ export const getUserMembership = /* GraphQL */ `
           phone
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       userId
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
@@ -112,12 +175,57 @@ export const listUserMemberships = /* GraphQL */ `
           createdById
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
         userId
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
+    }
+  }
+`;
+export const syncUserMemberships = /* GraphQL */ `
+  query SyncUserMemberships(
+    $filter: ModelUserMembershipFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncUserMemberships(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        organisationId
+        organisation {
+          id
+          name
+          createdById
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        userId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
     }
   }
 `;
@@ -147,12 +255,19 @@ export const userMembershipsByUser = /* GraphQL */ `
           createdById
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
         userId
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
   }
 `;

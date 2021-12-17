@@ -50,3 +50,21 @@ type UserMembership
   createdAt: AWSDateTime!
   updatedAt: AWSDateTime!
 }
+
+type Document
+  @model(subscriptions: null)
+  @auth(
+    rules: [
+      { allow: groups, groupsField: "organisationId", groupClaim: "tenants" }
+    ]
+  ) {
+  id: ID! @primaryKey
+  name: String!
+  parentId: ID
+  parent: Document @hasOne(fields: ["parentId"])
+  organisationId: ID!
+    @index(name: "byOrganisation", queryField: "documentsByOrganisation")
+  organisation: Organisation! @hasOne(fields: ["organisationId"])
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
