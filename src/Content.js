@@ -1,11 +1,13 @@
 import { API, Auth } from "aws-amplify";
 import { useEffect, useState } from "react";
+import * as mutations from "./graphql/mutations";
 import * as queries from "./graphql/queries";
 
 export function Content({ user, signOut }) {
   const [error, setError] = useState("");
   const [memberships, setMemberhsips] = useState();
   const [organisations, setOrganisations] = useState();
+  const [name, setName] = useState("");
 
   useEffect(() => {
     Auth.currentSession()
@@ -40,6 +42,12 @@ export function Content({ user, signOut }) {
     <main>
       <h1>Hello {user.username}</h1>
       <button onClick={signOut}>Sign out</button>
+
+      <div style={{ margin: "20px" }}>
+        <input value={name} onChange={(e) => setName(e.target.value)} />
+        <button onClick={handleCreateOrganisation}>Create organisation</button>
+      </div>
+
       <pre>{JSON.stringify(error, null, 2)}</pre>
 
       <p>Memberships:</p>
@@ -49,4 +57,18 @@ export function Content({ user, signOut }) {
       <pre>{JSON.stringify(organisations, null, 2)}</pre>
     </main>
   );
+
+  async function handleCreateOrganisation() {
+    if (!name) return;
+
+    await Auth.currentSession()
+      .then((session) => session.getIdToken().getJwtToken())
+      .then((authToken) =>
+        API.graphql({
+          variables: { input: { name } },
+          query: mutations.createOrganisation,
+          authToken,
+        })
+      );
+  }
 }
