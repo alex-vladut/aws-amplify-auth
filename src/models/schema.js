@@ -173,12 +173,6 @@ export const schema = {
                                     "update"
                                 ],
                                 "groupField": "groups"
-                            },
-                            {
-                                "allow": "private",
-                                "operations": [
-                                    "delete"
-                                ]
                             }
                         ]
                     }

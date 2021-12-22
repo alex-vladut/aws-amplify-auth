@@ -19,7 +19,6 @@ type Organisation
         groupClaim: "tenants"
         operations: [read, update]
       }
-      { allow: private, operations: [delete] }
     ]
   ) {
   id: ID! @primaryKey
