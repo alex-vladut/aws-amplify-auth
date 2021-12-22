@@ -23,11 +23,11 @@
         },
         "awsamplifyauthc2544e60PreSignup": {
           "deploymentBucketName": "amplify-awsamplifyauth-dev-150249-deployment",
-          "s3Key": "amplify-builds/awsamplifyauthc2544e60PreSignup-30774361417138714238-build.zip"
+          "s3Key": "amplify-builds/awsamplifyauthc2544e60PreSignup-6b4c314c6b6f30443457-build.zip"
         },
         "awsamplifyauthf8fc4e38": {
           "deploymentBucketName": "amplify-awsamplifyauth-dev-150249-deployment",
-          "s3Key": "amplify-builds/awsamplifyauthf8fc4e38-796a336975626558304d-build.zip"
+          "s3Key": "amplify-builds/awsamplifyauthf8fc4e38-6b44544a59534c575050-build.zip"
         }
       }
     }

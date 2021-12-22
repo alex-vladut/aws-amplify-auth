@@ -16,6 +16,7 @@ exports.handler = async (event, context, callback) => {
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
           _version: 1,
+          _lastChangedAt: Date.now(),
         }),
         ConditionExpression: "attribute_not_exists(id)",
       })

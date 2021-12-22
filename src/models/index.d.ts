@@ -16,6 +16,10 @@ type UserMembershipMetaData = {
   readOnlyFields;
 }
 
+type DocumentMetaData = {
+  readOnlyFields;
+}
+
 export declare class User {
   readonly id: string;
   readonly email: string;
@@ -46,4 +50,17 @@ export declare class UserMembership {
   readonly updatedAt: string;
   constructor(init: ModelInit<UserMembership>);
   static copyOf(source: UserMembership, mutator: (draft: MutableModel<UserMembership>) => MutableModel<UserMembership> | void): UserMembership;
+}
+
+export declare class Document {
+  readonly id: string;
+  readonly name: string;
+  readonly parentId?: string;
+  readonly parent?: Document;
+  readonly organisationId: string;
+  readonly organisation: Organisation;
+  readonly createdAt: string;
+  readonly updatedAt: string;
+  constructor(init: ModelInit<Document>);
+  static copyOf(source: Document, mutator: (draft: MutableModel<Document>) => MutableModel<Document> | void): Document;
 }
