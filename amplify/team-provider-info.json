@@ -27,7 +27,7 @@
         },
         "awsamplifyauthf8fc4e38": {
           "deploymentBucketName": "amplify-awsamplifyauth-dev-150249-deployment",
-          "s3Key": "amplify-builds/awsamplifyauthf8fc4e38-6b44544a59534c575050-build.zip"
+          "s3Key": "amplify-builds/awsamplifyauthf8fc4e38-5a4e74775978724b306f-build.zip"
         }
       }
     }
