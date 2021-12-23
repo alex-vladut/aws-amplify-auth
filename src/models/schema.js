@@ -168,7 +168,8 @@ export const schema = {
                                 "ownerField": "createdById",
                                 "allow": "owner",
                                 "operations": [
-                                    "create"
+                                    "create",
+                                    "update"
                                 ],
                                 "identityClaim": "cognito:username"
                             },

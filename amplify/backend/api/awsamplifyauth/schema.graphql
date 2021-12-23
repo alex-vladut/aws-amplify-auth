@@ -29,7 +29,7 @@ type Organisation
   ) {
   id: ID! @primaryKey
   name: String!
-  status: OrganisationStatus @default(value: "CREATED")
+  status: OrganisationStatus! @default(value: "CREATED")
   createdById: ID
   createdBy: User @hasOne(fields: ["createdById"])
   createdAt: AWSDateTime!
