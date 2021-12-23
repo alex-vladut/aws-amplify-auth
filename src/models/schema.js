@@ -103,7 +103,7 @@ export const schema = {
                     "type": {
                         "enum": "OrganisationStatus"
                     },
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "createdById": {
@@ -168,8 +168,7 @@ export const schema = {
                                 "ownerField": "createdById",
                                 "allow": "owner",
                                 "operations": [
-                                    "create",
-                                    "update"
+                                    "create"
                                 ],
                                 "identityClaim": "cognito:username"
                             },
@@ -437,5 +436,5 @@ export const schema = {
         }
     },
     "nonModels": {},
-    "version": "df06adf4da79295213abf8212c27ba02"
+    "version": "bc17b66cb6be239452b3d1f7dbfa1618"
 };

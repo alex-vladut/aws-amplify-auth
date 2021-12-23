@@ -37,7 +37,7 @@ export declare class User {
 export declare class Organisation {
   readonly id: string;
   readonly name: string;
-  readonly status?: OrganisationStatus | keyof typeof OrganisationStatus;
+  readonly status: OrganisationStatus | keyof typeof OrganisationStatus;
   readonly createdById?: string;
   readonly createdBy?: User;
   readonly createdAt: string;
