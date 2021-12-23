@@ -60,6 +60,7 @@ export const createOrganisation = /* GraphQL */ `
     createOrganisation(input: $input, condition: $condition) {
       id
       name
+      status
       createdById
       createdBy {
         id
@@ -87,6 +88,7 @@ export const updateOrganisation = /* GraphQL */ `
     updateOrganisation(input: $input, condition: $condition) {
       id
       name
+      status
       createdById
       createdBy {
         id
@@ -114,6 +116,7 @@ export const deleteOrganisation = /* GraphQL */ `
     deleteOrganisation(input: $input, condition: $condition) {
       id
       name
+      status
       createdById
       createdBy {
         id
@@ -144,6 +147,7 @@ export const createUserMembership = /* GraphQL */ `
       organisation {
         id
         name
+        status
         createdById
         createdBy {
           id
@@ -181,6 +185,7 @@ export const updateUserMembership = /* GraphQL */ `
       organisation {
         id
         name
+        status
         createdById
         createdBy {
           id
@@ -218,6 +223,7 @@ export const deleteUserMembership = /* GraphQL */ `
       organisation {
         id
         name
+        status
         createdById
         createdBy {
           id
@@ -272,6 +278,7 @@ export const createDocument = /* GraphQL */ `
         organisation {
           id
           name
+          status
           createdById
           createdAt
           updatedAt
@@ -289,6 +296,7 @@ export const createDocument = /* GraphQL */ `
       organisation {
         id
         name
+        status
         createdById
         createdBy {
           id
@@ -342,6 +350,7 @@ export const updateDocument = /* GraphQL */ `
         organisation {
           id
           name
+          status
           createdById
           createdAt
           updatedAt
@@ -359,6 +368,7 @@ export const updateDocument = /* GraphQL */ `
       organisation {
         id
         name
+        status
         createdById
         createdBy {
           id
@@ -412,6 +422,7 @@ export const deleteDocument = /* GraphQL */ `
         organisation {
           id
           name
+          status
           createdById
           createdAt
           updatedAt
@@ -429,6 +440,7 @@ export const deleteDocument = /* GraphQL */ `
       organisation {
         id
         name
+        status
         createdById
         createdBy {
           id

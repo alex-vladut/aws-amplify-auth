@@ -97,6 +97,15 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
+                "status": {
+                    "name": "status",
+                    "isArray": false,
+                    "type": {
+                        "enum": "OrganisationStatus"
+                    },
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdById": {
                     "name": "createdById",
                     "isArray": false,
@@ -416,7 +425,16 @@ export const schema = {
             ]
         }
     },
-    "enums": {},
+    "enums": {
+        "OrganisationStatus": {
+            "name": "OrganisationStatus",
+            "values": [
+                "CREATED",
+                "DISABLED",
+                "INACTIVE"
+            ]
+        }
+    },
     "nonModels": {},
-    "version": "e449fda4dfb24379ae43f08e3ef5cc8c"
+    "version": "df06adf4da79295213abf8212c27ba02"
 };

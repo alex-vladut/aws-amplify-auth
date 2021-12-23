@@ -20,6 +20,7 @@ export const getOrganisation = /* GraphQL */ `
     getOrganisation(id: $id) {
       id
       name
+      status
       createdById
       createdBy {
         id
@@ -57,6 +58,7 @@ export const listOrganisations = /* GraphQL */ `
       items {
         id
         name
+        status
         createdById
         createdBy {
           id
@@ -95,6 +97,7 @@ export const syncOrganisations = /* GraphQL */ `
       items {
         id
         name
+        status
         createdById
         createdBy {
           id
@@ -125,6 +128,7 @@ export const getUserMembership = /* GraphQL */ `
       organisation {
         id
         name
+        status
         createdById
         createdBy {
           id
@@ -172,6 +176,7 @@ export const listUserMemberships = /* GraphQL */ `
         organisation {
           id
           name
+          status
           createdById
           createdAt
           updatedAt
@@ -210,6 +215,7 @@ export const syncUserMemberships = /* GraphQL */ `
         organisation {
           id
           name
+          status
           createdById
           createdAt
           updatedAt
@@ -252,6 +258,7 @@ export const userMembershipsByUser = /* GraphQL */ `
         organisation {
           id
           name
+          status
           createdById
           createdAt
           updatedAt
@@ -296,6 +303,7 @@ export const getDocument = /* GraphQL */ `
         organisation {
           id
           name
+          status
           createdById
           createdAt
           updatedAt
@@ -313,6 +321,7 @@ export const getDocument = /* GraphQL */ `
       organisation {
         id
         name
+        status
         createdById
         createdBy {
           id
@@ -372,6 +381,7 @@ export const listDocuments = /* GraphQL */ `
         organisation {
           id
           name
+          status
           createdById
           createdAt
           updatedAt
@@ -422,6 +432,7 @@ export const syncDocuments = /* GraphQL */ `
         organisation {
           id
           name
+          status
           createdById
           createdAt
           updatedAt
@@ -474,6 +485,7 @@ export const documentsByOrganisation = /* GraphQL */ `
         organisation {
           id
           name
+          status
           createdById
           createdAt
           updatedAt

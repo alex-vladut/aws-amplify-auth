@@ -1,3 +1,9 @@
+enum OrganisationStatus {
+  CREATED
+  DISABLED
+  INACTIVE
+}
+
 type User
   @model(queries: { get: "getUser" }, subscriptions: null)
   @auth(rules: [{ allow: owner, ownerField: "id" }]) {
@@ -23,6 +29,7 @@ type Organisation
   ) {
   id: ID! @primaryKey
   name: String!
+  status: OrganisationStatus @default(value: "CREATED")
   createdById: ID
   createdBy: User @hasOne(fields: ["createdById"])
   createdAt: AWSDateTime!

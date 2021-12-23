@@ -1,6 +1,10 @@
 import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplify/datastore";
 
-
+export enum OrganisationStatus {
+  CREATED = "CREATED",
+  DISABLED = "DISABLED",
+  INACTIVE = "INACTIVE"
+}
 
 
 
@@ -33,6 +37,7 @@ export declare class User {
 export declare class Organisation {
   readonly id: string;
   readonly name: string;
+  readonly status?: OrganisationStatus | keyof typeof OrganisationStatus;
   readonly createdById?: string;
   readonly createdBy?: User;
   readonly createdAt: string;
