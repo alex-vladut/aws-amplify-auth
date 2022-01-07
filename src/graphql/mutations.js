@@ -10,6 +10,20 @@ export const createUser = /* GraphQL */ `
       id
       email
       phone
+      memberships {
+        items {
+          id
+          organisationId
+          userId
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -27,6 +41,20 @@ export const updateUser = /* GraphQL */ `
       id
       email
       phone
+      memberships {
+        items {
+          id
+          organisationId
+          userId
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -44,6 +72,20 @@ export const deleteUser = /* GraphQL */ `
       id
       email
       phone
+      memberships {
+        items {
+          id
+          organisationId
+          userId
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -66,6 +108,10 @@ export const createOrganisation = /* GraphQL */ `
         id
         email
         phone
+        memberships {
+          nextToken
+          startedAt
+        }
         createdAt
         updatedAt
         _version
@@ -94,6 +140,10 @@ export const updateOrganisation = /* GraphQL */ `
         id
         email
         phone
+        memberships {
+          nextToken
+          startedAt
+        }
         createdAt
         updatedAt
         _version
@@ -122,6 +172,10 @@ export const deleteOrganisation = /* GraphQL */ `
         id
         email
         phone
+        memberships {
+          nextToken
+          startedAt
+        }
         createdAt
         updatedAt
         _version

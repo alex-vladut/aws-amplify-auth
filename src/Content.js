@@ -3,6 +3,46 @@ import { useEffect, useState } from "react";
 import * as mutations from "./graphql/mutations";
 import * as queries from "./graphql/queries";
 
+const getUser = /* GraphQL */ `
+  query GetUser($id: ID!) {
+    getUser(id: $id) {
+      id
+      email
+      phone
+      memberships {
+        items {
+          id
+          organisationId
+          organisation {
+            id
+            name
+            status
+            createdById
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          userId
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+
 export function Content({ user, signOut }) {
   const [error, setError] = useState("");
   const [memberships, setMemberhsips] = useState();
@@ -24,10 +64,16 @@ export function Content({ user, signOut }) {
         setError(error);
       });
     Auth.currentSession()
-      .then((session) => session.getIdToken().getJwtToken())
-      .then((authToken) =>
+      .then((session) => {
+        return {
+          payload: session.getAccessToken().decodePayload(),
+          authToken: session.getIdToken().getJwtToken(),
+        };
+      })
+      .then(({ authToken, payload }) =>
         API.graphql({
-          query: queries.listUserMemberships,
+          query: getUser,
+          variables: { id: payload.sub },
           authToken,
         })
       )

@@ -8,12 +8,12 @@ const OrganisationStatus = {
   "INACTIVE": "INACTIVE"
 };
 
-const { User, Organisation, UserMembership, Document } = initSchema(schema);
+const { User, UserMembership, Organisation, Document } = initSchema(schema);
 
 export {
   User,
-  Organisation,
   UserMembership,
+  Organisation,
   Document,
   OrganisationStatus
 };

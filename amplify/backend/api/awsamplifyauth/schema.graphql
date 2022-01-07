@@ -10,6 +10,7 @@ type User
   id: ID! @primaryKey
   email: AWSEmail!
   phone: AWSPhone
+  memberships: [UserMembership!] @hasMany(indexName: "byUser", fields: ["id"])
   createdAt: AWSDateTime!
   updatedAt: AWSDateTime!
 }

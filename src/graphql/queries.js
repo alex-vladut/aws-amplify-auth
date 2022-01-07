@@ -7,6 +7,20 @@ export const getUser = /* GraphQL */ `
       id
       email
       phone
+      memberships {
+        items {
+          id
+          organisationId
+          userId
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -26,6 +40,10 @@ export const getOrganisation = /* GraphQL */ `
         id
         email
         phone
+        memberships {
+          nextToken
+          startedAt
+        }
         createdAt
         updatedAt
         _version
