@@ -38,6 +38,14 @@ export const schema = {
                         "associatedWith": "userId"
                     }
                 },
+                "organisationIds": {
+                    "name": "organisationIds",
+                    "isArray": true,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": [],
+                    "isArrayNullable": true
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -59,9 +67,6 @@ export const schema = {
                 {
                     "type": "model",
                     "properties": {
-                        "queries": {
-                            "get": "getUser"
-                        },
                         "subscriptions": null
                     }
                 },
@@ -82,6 +87,19 @@ export const schema = {
                                 "ownerField": "id",
                                 "allow": "owner",
                                 "identityClaim": "cognito:username",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            },
+                            {
+                                "groupClaim": "tenants",
+                                "provider": "userPools",
+                                "allow": "groups",
+                                "groupsField": "organisationIds",
+                                "groupField": "groups",
                                 "operations": [
                                     "create",
                                     "update",
@@ -450,5 +468,5 @@ export const schema = {
         }
     },
     "nonModels": {},
-    "version": "1f2a2175b8fbfc8c30e8a2d6a9df2dfa"
+    "version": "194eb581ef7fa26537f8fdce49565bcd"
 };

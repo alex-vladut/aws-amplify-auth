@@ -29,6 +29,7 @@ export declare class User {
   readonly email: string;
   readonly phone?: string;
   readonly memberships?: UserMembership[];
+  readonly organisationIds?: string[];
   readonly createdAt: string;
   readonly updatedAt: string;
   constructor(init: ModelInit<User>);

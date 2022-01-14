@@ -21,11 +21,80 @@ export const getUser = /* GraphQL */ `
         nextToken
         startedAt
       }
+      organisationIds
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+    }
+  }
+`;
+export const listUsers = /* GraphQL */ `
+  query ListUsers(
+    $id: ID
+    $filter: ModelUserFilterInput
+    $limit: Int
+    $nextToken: String
+    $sortDirection: ModelSortDirection
+  ) {
+    listUsers(
+      id: $id
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      sortDirection: $sortDirection
+    ) {
+      items {
+        id
+        email
+        phone
+        memberships {
+          nextToken
+          startedAt
+        }
+        organisationIds
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncUsers = /* GraphQL */ `
+  query SyncUsers(
+    $filter: ModelUserFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncUsers(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        email
+        phone
+        memberships {
+          nextToken
+          startedAt
+        }
+        organisationIds
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
     }
   }
 `;
@@ -44,6 +113,7 @@ export const getOrganisation = /* GraphQL */ `
           nextToken
           startedAt
         }
+        organisationIds
         createdAt
         updatedAt
         _version
@@ -82,6 +152,7 @@ export const listOrganisations = /* GraphQL */ `
           id
           email
           phone
+          organisationIds
           createdAt
           updatedAt
           _version
@@ -121,6 +192,7 @@ export const syncOrganisations = /* GraphQL */ `
           id
           email
           phone
+          organisationIds
           createdAt
           updatedAt
           _version
@@ -152,6 +224,7 @@ export const getUserMembership = /* GraphQL */ `
           id
           email
           phone
+          organisationIds
           createdAt
           updatedAt
           _version
@@ -255,7 +328,7 @@ export const syncUserMemberships = /* GraphQL */ `
 `;
 export const userMembershipsByUser = /* GraphQL */ `
   query UserMembershipsByUser(
-    $userId: ID
+    $userId: ID!
     $organisationId: ModelIDKeyConditionInput
     $sortDirection: ModelSortDirection
     $filter: ModelUserMembershipFilterInput
@@ -345,6 +418,7 @@ export const getDocument = /* GraphQL */ `
           id
           email
           phone
+          organisationIds
           createdAt
           updatedAt
           _version
@@ -471,7 +545,7 @@ export const syncDocuments = /* GraphQL */ `
 `;
 export const documentsByOrganisation = /* GraphQL */ `
   query DocumentsByOrganisation(
-    $organisationId: ID
+    $organisationId: ID!
     $sortDirection: ModelSortDirection
     $filter: ModelDocumentFilterInput
     $limit: Int

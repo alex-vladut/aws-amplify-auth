@@ -24,6 +24,7 @@ export const createUser = /* GraphQL */ `
         nextToken
         startedAt
       }
+      organisationIds
       createdAt
       updatedAt
       _version
@@ -55,6 +56,7 @@ export const updateUser = /* GraphQL */ `
         nextToken
         startedAt
       }
+      organisationIds
       createdAt
       updatedAt
       _version
@@ -86,6 +88,7 @@ export const deleteUser = /* GraphQL */ `
         nextToken
         startedAt
       }
+      organisationIds
       createdAt
       updatedAt
       _version
@@ -112,6 +115,7 @@ export const createOrganisation = /* GraphQL */ `
           nextToken
           startedAt
         }
+        organisationIds
         createdAt
         updatedAt
         _version
@@ -144,6 +148,7 @@ export const updateOrganisation = /* GraphQL */ `
           nextToken
           startedAt
         }
+        organisationIds
         createdAt
         updatedAt
         _version
@@ -176,6 +181,7 @@ export const deleteOrganisation = /* GraphQL */ `
           nextToken
           startedAt
         }
+        organisationIds
         createdAt
         updatedAt
         _version
@@ -207,6 +213,7 @@ export const createUserMembership = /* GraphQL */ `
           id
           email
           phone
+          organisationIds
           createdAt
           updatedAt
           _version
@@ -245,6 +252,7 @@ export const updateUserMembership = /* GraphQL */ `
           id
           email
           phone
+          organisationIds
           createdAt
           updatedAt
           _version
@@ -283,6 +291,7 @@ export const deleteUserMembership = /* GraphQL */ `
           id
           email
           phone
+          organisationIds
           createdAt
           updatedAt
           _version
@@ -356,6 +365,7 @@ export const createDocument = /* GraphQL */ `
           id
           email
           phone
+          organisationIds
           createdAt
           updatedAt
           _version
@@ -428,6 +438,7 @@ export const updateDocument = /* GraphQL */ `
           id
           email
           phone
+          organisationIds
           createdAt
           updatedAt
           _version
@@ -500,6 +511,7 @@ export const deleteDocument = /* GraphQL */ `
           id
           email
           phone
+          organisationIds
           createdAt
           updatedAt
           _version
