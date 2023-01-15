@@ -19,6 +19,8 @@ exports.handler = async (event) => {
   event.response = {
     claimsOverrideDetails: {
       claimsToAddOrOverride: {
+        // 03-02-2022 - checked again and Cognito still not supporting arrays in custom claims, so it has to be stringified
+        // Error received on login/token refresh: Unrecognizable lambda output
         tenants: JSON.stringify(
           admin.Items.map((item) => item.organisationId.S)
         ),
